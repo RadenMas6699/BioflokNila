@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by RadenMas on 22/4/2022.
+  ~ Copyright (c) 2022.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.radenmas.monitoring.anggur.ui.main.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/controlFragment"
+        android:name="com.radenmas.monitoring.anggur.ui.main.ControlFragment"
+        android:label="fragment_control"
+        tools:layout="@layout/fragment_control" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.radenmas.monitoring.anggur.ui.main.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+</navigation>
