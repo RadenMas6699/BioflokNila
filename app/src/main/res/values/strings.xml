@@ -8,4 +8,8 @@
     <string name="home">Home</string>
     <string name="control">Control</string>
     <string name="chart">Chart</string>
+    <string name="temp">Suhu</string>
+    <string name="ph">pH</string>
+    <string name="turbidity">Kekeruhan</string>
+    <string name="feed">Pakan</string>
 </resources>

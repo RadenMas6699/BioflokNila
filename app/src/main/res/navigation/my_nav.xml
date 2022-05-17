@@ -11,17 +11,17 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.radenmas.monitoring.anggur.ui.main.HomeFragment"
-        android:label="fragment_home"
+        android:name="com.radenmas.bioflok_nila.ui.main.HomeFragment"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/controlFragment"
-        android:name="com.radenmas.monitoring.anggur.ui.main.ControlFragment"
-        android:label="fragment_control"
+        android:name="com.radenmas.bioflok_nila.ui.main.ControlFragment"
+        android:label="@string/control"
         tools:layout="@layout/fragment_control" />
     <fragment
-        android:id="@+id/infoFragment"
-        android:name="com.radenmas.monitoring.anggur.ui.main.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        android:id="@+id/chartFragment"
+        android:name="com.radenmas.bioflok_nila.ui.main.ChartFragment"
+        android:label="@string/chart"
+        tools:layout="@layout/fragment_chart" />
 </navigation>
