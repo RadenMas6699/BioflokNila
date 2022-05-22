@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.radenmas.bioflok_nila.R
 import com.radenmas.bioflok_nila.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,8 +28,26 @@ class MainActivity : AppCompatActivity() {
         val v = b.root
         setContentView(v)
 
-        val navController = findNavController(R.id.fragmentContainerView)
+        val dt = Date()
+        when (dt.hours) {
+            in 1..10 -> {
+                b.tvTime.text = "Selamat Pagi"
+            }
+            in 11..14 -> {
+                b.tvTime.text = "Selamat Siang"
+            }
+            in 15..18 -> {
+                b.tvTime.text = "Selamat Sore"
+            }
+            in 19..24 -> {
+                b.tvTime.text = "Selamat Malam"
+            }
+        }
 
+        val navController = findNavController(R.id.fragmentContainerView)
         b.navBottom.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            b.tvTitle.text = destination.label
+        }
     }
 }

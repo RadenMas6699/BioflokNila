@@ -5,6 +5,7 @@
 
 <resources>
     <string name="app_name">Bioflok Nila</string>
+    <string name="dev_name">Desta</string>
     <string name="home">Home</string>
     <string name="control">Control</string>
     <string name="chart">Chart</string>
@@ -12,4 +13,5 @@
     <string name="ph">pH</string>
     <string name="turbidity">Kekeruhan</string>
     <string name="feed">Pakan</string>
+    <string name="last_update">Terakhir Update</string>
 </resources>

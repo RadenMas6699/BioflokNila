@@ -3,52 +3,77 @@
   ~ Copyright (c) 2022.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.main.ControlFragment">
 
-    <androidx.cardview.widget.CardView
-        style="@style/CardHome"
+    <LinearLayout
+        android:id="@+id/menuControl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
+        <TextView
+            android:id="@+id/tvTemp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_normal"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/temp"
+            android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tvTitleTemp"
-                style="@style/titleItemHome"
-                android:text="@string/temp" />
+        <TextView
+            android:id="@+id/tvPh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_normal"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/ph"
+            android:textColor="@color/secondary_text" />
 
-            <ImageView
-                android:id="@+id/imgTemp"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/ic_temperature_2_color" />
+        <TextView
+            android:id="@+id/tvTurbidity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_normal"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/turbidity"
+            android:textColor="@color/secondary_text" />
 
-            <TextView
-                android:id="@+id/tvValueTemp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="8dp"
-                android:background="@color/primary"
-                android:gravity="center"
-                android:minWidth="120dp"
-                android:text="24 \u2103"
-                android:textColor="@color/white_text"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvFeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_normal"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/feed"
+            android:textColor="@color/secondary_text" />
+    </LinearLayout>
 
-</LinearLayout>
+    <fragment
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/menuControl"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_control" />
+</RelativeLayout>

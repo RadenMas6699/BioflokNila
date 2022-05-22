@@ -23,7 +23,6 @@
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selamat Siang"
             android:textColor="@color/primary_text"
             android:textSize="16sp" />
 
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTime"
             android:layout_marginTop="4dp"
-            android:text="Desta"
+            android:text="@string/dev_name"
             android:textColor="@color/primary_text"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -43,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:gravity="end"
-            android:text="@string/home"
             android:textColor="@color/primary_text"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -118,7 +116,7 @@
                     android:layout_toEndOf="@id/imgCalender"
                     android:gravity="end"
                     android:lines="2"
-                    android:text="Terakhir Update"
+                    android:text="@string/last_update"
                     android:textColor="@color/secondary_text"
                     android:textStyle="bold" />
 
