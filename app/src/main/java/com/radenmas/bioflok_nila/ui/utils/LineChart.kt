@@ -14,9 +14,10 @@ import java.util.ArrayList
  * Created by RadenMas on 24/04/2022.
  */
 class LineChart {
-    fun chart(lineChart: LineChart, values: ArrayList<Entry?>, min: Int, max: Int) {
+    fun chart(lineChart: LineChart, values: ArrayList<Entry>, min: Int, max: Int) {
         val lineDataSet = LineDataSet(null, null)
         lineDataSet.values = values
+        lineDataSet.setDrawValues(false)
         lineDataSet.cubicIntensity = 1.5f
         lineDataSet.setDrawFilled(true)
         lineDataSet.color = R.color.black

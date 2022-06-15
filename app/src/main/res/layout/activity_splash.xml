@@ -39,8 +39,17 @@
         style="@style/SpinKitView.Large.ThreeBounce"
         android:layout_width="46dp"
         android:layout_height="46dp"
+        android:layout_above="@id/tvAppVersion"
+        android:layout_centerHorizontal="true"
+        app:SpinKit_Color="@color/white" />
+
+    <TextView
+        android:id="@+id/tvAppVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        app:SpinKit_Color="@color/primary_text" />
+        android:textColor="@color/primary_text"
+        android:textSize="12sp" />
 </RelativeLayout>

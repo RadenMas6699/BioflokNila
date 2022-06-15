@@ -5,6 +5,7 @@
 
 <resources>
     <string name="app_name">Bioflok Nila</string>
+    <string name="app_version">Versi %1$s</string>
     <string name="dev_name">Desta</string>
     <string name="home">Home</string>
     <string name="control">Control</string>

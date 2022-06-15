@@ -68,12 +68,9 @@
             android:textColor="@color/secondary_text" />
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <FrameLayout
+        android:id="@+id/fragmentControl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/menuControl"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_control" />
+        android:layout_below="@id/menuControl" />
 </RelativeLayout>

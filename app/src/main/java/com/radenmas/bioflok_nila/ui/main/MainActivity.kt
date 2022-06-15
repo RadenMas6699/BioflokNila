@@ -11,8 +11,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.radenmas.bioflok_nila.R
 import com.radenmas.bioflok_nila.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         val dt = Date()
         when (dt.hours) {
-            in 1..10 -> {
+            in 0..5 -> {
+                b.tvTime.text = "Selamat Malam"
+            }
+            in 6..10 -> {
                 b.tvTime.text = "Selamat Pagi"
             }
             in 11..14 -> {
@@ -39,10 +47,33 @@ class MainActivity : AppCompatActivity() {
             in 15..18 -> {
                 b.tvTime.text = "Selamat Sore"
             }
-            in 19..24 -> {
+            in 19..23 -> {
                 b.tvTime.text = "Selamat Malam"
             }
         }
+
+        FirebaseDatabase.getInstance().reference.child("monitoring").limitToLast(1)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (snapshot in snapshot.children) {
+                            val time = snapshot.child("time").value.toString().toLong()
+
+                            val date = Date(time)
+                            val formatClock = SimpleDateFormat("HH:mm zz")
+                            val formatDate = SimpleDateFormat("dd MMM yyyy")
+
+                            b.tvClock.text = formatClock.format(date)
+                            b.tvDate.text = formatDate.format(date)
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
 
         val navController = findNavController(R.id.fragmentContainerView)
         b.navBottom.setupWithNavController(navController)

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "526699951413",
+    "firebase_url": "https://bioflok-nila-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bioflok-nila",
+    "storage_bucket": "bioflok-nila.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526699951413:android:5bae99156e33171542487c",
+        "android_client_info": {
+          "package_name": "com.radenmas.bioflok_nila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526699951413-0mlvh0e7kkpica0tjuntvcff9isprc1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbigSZkV7PIV8Sd-ymbMWJhlOeyNLgrl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526699951413-0mlvh0e7kkpica0tjuntvcff9isprc1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

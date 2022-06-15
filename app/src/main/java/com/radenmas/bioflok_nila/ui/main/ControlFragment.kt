@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.radenmas.bioflok_nila.R
 import com.radenmas.bioflok_nila.databinding.FragmentControlBinding
 
@@ -38,15 +39,27 @@ class ControlFragment : Fragment() {
     private fun onClick() {
         b.tvTemp.setOnClickListener {
             clicked(b.tvTemp, b.tvPh, b.tvTurbidity, b.tvFeed)
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentControl, TemperatureFragment())
+            transaction?.commit()
         }
         b.tvPh.setOnClickListener {
             clicked(b.tvPh, b.tvTemp, b.tvTurbidity, b.tvFeed)
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentControl, PhFragment())
+            transaction?.commit()
         }
         b.tvTurbidity.setOnClickListener {
             clicked(b.tvTurbidity, b.tvPh, b.tvTemp, b.tvFeed)
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentControl, TurbidityFragment())
+            transaction?.commit()
         }
         b.tvFeed.setOnClickListener {
             clicked(b.tvFeed, b.tvTemp, b.tvPh, b.tvTurbidity)
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentControl, FeedFishFragment())
+            transaction?.commit()
         }
     }
 
@@ -65,6 +78,9 @@ class ControlFragment : Fragment() {
     }
 
     private fun initView() {
-
+        clicked(b.tvTemp, b.tvPh, b.tvTurbidity, b.tvFeed)
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentControl, TemperatureFragment())
+        transaction?.commit()
     }
 }

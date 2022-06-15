@@ -3,7 +3,7 @@
   ~ Copyright (c) 2022.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,5 +11,66 @@
     android:orientation="vertical"
     tools:context=".ui.main.FeedFishFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvValueFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_selected"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="18dp"
+            android:text="24 \u2103"
+            android:textColor="@color/primary_text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/viewLottie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieSuccess"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/checklist" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieLoading"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading" />
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Stabilkan Suhu Air"
+            android:textAllCaps="false"
+            android:textColor="@color/white_text"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="6dp" />
+    </LinearLayout>
+
+</ScrollView>
