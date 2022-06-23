@@ -41,8 +41,8 @@ class PhFragment : Fragment() {
     private fun onClick() {
         b.btnPh.text = "Stabilkan pH Air"
         b.btnPh.setOnClickListener {
-            val dbPh = FirebaseDatabase.getInstance().reference.child("control").child("ph")
-            dbPh.setValue(1)
+            val dbPh = FirebaseDatabase.getInstance().reference.child("control")
+            dbPh.setValue(2)
 
             b.lottieLoading.visibility = View.VISIBLE
 
@@ -64,8 +64,8 @@ class PhFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (snapshot in snapshot.children) {
-                            val ph = snapshot.child("ph").value.toString()
-                            b.tvValuePh.text = ph
+                            val ph = snapshot.child("ph").value
+                            b.tvValuePh.text = String.format("%.2f", ph)
                         }
                     }
                 }

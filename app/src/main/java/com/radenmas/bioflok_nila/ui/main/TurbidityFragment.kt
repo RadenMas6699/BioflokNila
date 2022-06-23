@@ -43,8 +43,8 @@ class TurbidityFragment : Fragment() {
     private fun onClick() {
         b.btnTurbidity.text = "Bersihkan Air"
         b.btnTurbidity.setOnClickListener {
-            val dbTurbidity = FirebaseDatabase.getInstance().reference.child("control").child("turbidity")
-            dbTurbidity.setValue(1)
+            val dbTurbidity = FirebaseDatabase.getInstance().reference.child("control")
+            dbTurbidity.setValue(3)
 
             b.lottieLoading.visibility = View.VISIBLE
 
@@ -66,8 +66,8 @@ class TurbidityFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (snapshot in snapshot.children) {
-                            val turbidity = snapshot.child("turbidity").value.toString()
-                            b.tvValueTurbidity.text = "$turbidity %"
+                            val turbidity = snapshot.child("turb").value.toString()
+                            b.tvValueTurbidity.text = turbidity
                         }
                     }
                 }

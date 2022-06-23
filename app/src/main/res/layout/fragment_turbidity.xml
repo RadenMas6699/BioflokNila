@@ -24,9 +24,10 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/bg_selected"
+            android:gravity="center_horizontal"
+            android:minWidth="80dp"
             android:paddingHorizontal="18dp"
             android:paddingVertical="18dp"
-            android:text="24 \u2103"
             android:textColor="@color/primary_text"
             android:textSize="22sp"
             android:textStyle="bold" />

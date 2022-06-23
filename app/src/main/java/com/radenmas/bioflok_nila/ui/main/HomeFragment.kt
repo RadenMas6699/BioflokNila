@@ -46,27 +46,38 @@ class HomeFragment : Fragment() {
         FirebaseDatabase.getInstance().reference.child("monitoring").limitToLast(1)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (snapshot in snapshot.children) {
-                            val temp = snapshot.child("temp").value.toString()
-                            val ph = snapshot.child("ph").value.toString()
-                            val turbidity = snapshot.child("turbidity").value.toString()
-                            val feed = snapshot.child("feed").value.toString().toLong()
 
-                            val date = Date(feed)
-                            val formatDate = SimpleDateFormat("dd MMM")
+                    for (snapshot in snapshot.children) {
+                        val temp = snapshot.child("temp").value.toString()
+                        val ph = snapshot.child("ph").value
+                        val turbidity = snapshot.child("turb").value.toString()
 
-                            b.tvValueTemp.text = "$temp \u2103"
-                            b.tvValuePh.text = ph
-                            b.tvValueTurbidity.text = "$turbidity %"
-                            b.tvValueFeed.text = formatDate.format(date)
-                        }
+                        b.tvValueTemp.text = "$temp \u2103"
+                        b.tvValuePh.text = String.format("%.2f", ph)
+                        b.tvValueTurbidity.text = turbidity
                     }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
 
                 }
+            })
+
+        FirebaseDatabase.getInstance().reference
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val feed = snapshot.child("feed").value.toString().toLong()
+
+                    val date = Date(feed * 1000)
+                    val formatDate = SimpleDateFormat("dd MMM")
+                    b.tvValueFeed.text = formatDate.format(date)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
             })
     }
 }

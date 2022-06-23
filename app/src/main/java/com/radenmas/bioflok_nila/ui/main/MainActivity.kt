@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                         for (snapshot in snapshot.children) {
                             val time = snapshot.child("time").value.toString().toLong()
 
-                            val date = Date(time)
+                            val date = Date(time * 1000)
                             val formatClock = SimpleDateFormat("HH:mm zz")
                             val formatDate = SimpleDateFormat("dd MMM yyyy")
 

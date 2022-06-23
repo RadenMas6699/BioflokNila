@@ -43,35 +43,31 @@ class FeedFishFragment : Fragment() {
     private fun onClick() {
         b.btnFeed.text = "Beri Pakan Ikan"
         b.btnFeed.setOnClickListener {
-            val dbFeed = FirebaseDatabase.getInstance().reference.child("control").child("feed")
-            dbFeed.setValue(1)
+            val dbFeed = FirebaseDatabase.getInstance().reference.child("control")
+            dbFeed.setValue(4)
 
             b.lottieLoading.visibility = View.VISIBLE
 
             Handler(Looper.getMainLooper()).postDelayed({
                 b.lottieLoading.visibility = View.GONE
                 b.lottieSuccess.visibility = View.VISIBLE
-
+                dbFeed.setValue(0)
                 Handler(Looper.getMainLooper()).postDelayed({
                     b.lottieSuccess.visibility = View.GONE
-                    dbFeed.setValue(0)
-                }, 3000)
+
+                }, 1000)
             }, 2000)
         }
     }
 
     private fun initView() {
-        FirebaseDatabase.getInstance().reference.child("monitoring").limitToLast(1)
+        FirebaseDatabase.getInstance().reference
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (snapshot in snapshot.children) {
-                            val feed = snapshot.child("feed").value.toString().toLong()
-                            val date = Date(feed)
-                            val formatDate = SimpleDateFormat("dd MMM")
-                            b.tvValueFeed.text = formatDate.format(date)
-                        }
-                    }
+                    val feed = snapshot.child("feed").value.toString().toLong()
+                    val date = Date(feed * 1000)
+                    val formatDate = SimpleDateFormat("dd MMM")
+                    b.tvValueFeed.text = formatDate.format(date)
                 }
 
                 override fun onCancelled(error: DatabaseError) {

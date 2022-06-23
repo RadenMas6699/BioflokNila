@@ -105,7 +105,7 @@ class ChartFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val dataTurbidity = ArrayList<Entry>()
                     for (snapshot in snapshot.children) {
-                        val turbidity = snapshot.child("turbidity").value.toString().toFloat()
+                        val turbidity = snapshot.child("turb").value.toString().toFloat()
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataTurbidity.add(Entry(time, turbidity))
                     }

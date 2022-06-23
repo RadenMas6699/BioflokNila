@@ -41,7 +41,7 @@ class TemperatureFragment : Fragment() {
     private fun onClick() {
         b.btnTemp.text = "Stabilkan Suhu Air"
         b.btnTemp.setOnClickListener {
-            val dbTemp = FirebaseDatabase.getInstance().reference.child("control").child("temp")
+            val dbTemp = FirebaseDatabase.getInstance().reference.child("control")
             dbTemp.setValue(1)
 
             b.lottieLoading.visibility = View.VISIBLE
