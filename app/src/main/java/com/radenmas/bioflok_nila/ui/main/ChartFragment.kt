@@ -90,7 +90,7 @@ class ChartFragment : Fragment() {
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataPh.add(Entry(time, ph))
                     }
-                    LineChart().chart(b.lineChart, dataPh, 5, 9)
+                    LineChart().chart(b.lineChart, dataPh, 1, 11)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -109,7 +109,7 @@ class ChartFragment : Fragment() {
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataTurbidity.add(Entry(time, turbidity))
                     }
-                    LineChart().chart(b.lineChart, dataTurbidity, 0, 100)
+                    LineChart().chart(b.lineChart, dataTurbidity, 0, 1000)
                 }
 
                 override fun onCancelled(error: DatabaseError) {

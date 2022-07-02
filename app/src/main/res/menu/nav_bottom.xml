@@ -10,10 +10,6 @@
         android:icon="@drawable/ic_home_outline"
         android:title="@string/home" />
     <item
-        android:id="@+id/controlFragment"
-        android:icon="@drawable/ic_control_outline"
-        android:title="@string/control" />
-    <item
         android:id="@+id/chartFragment"
         android:icon="@drawable/ic_chart_outline"
         android:title="@string/chart" />

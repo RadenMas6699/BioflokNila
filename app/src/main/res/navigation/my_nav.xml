@@ -15,11 +15,6 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/controlFragment"
-        android:name="com.radenmas.bioflok_nila.ui.main.ControlFragment"
-        android:label="@string/control"
-        tools:layout="@layout/fragment_control" />
-    <fragment
         android:id="@+id/chartFragment"
         android:name="com.radenmas.bioflok_nila.ui.main.ChartFragment"
         android:label="@string/chart"
