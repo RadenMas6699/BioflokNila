@@ -43,11 +43,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        FirebaseDatabase.getInstance().reference.child("monitoring").limitToLast(1)
+        FirebaseDatabase.getInstance().reference.child("realtime")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-
-                    for (snapshot in snapshot.children) {
+                    if (snapshot.exists()) {
                         val temp = snapshot.child("temp").value.toString()
                         val ph = snapshot.child("ph").value
                         val turbidity = snapshot.child("turb").value.toString()
@@ -56,7 +55,6 @@ class HomeFragment : Fragment() {
                         b.tvValuePh.text = String.format("%.2f", ph)
                         b.tvValueTurbidity.text = turbidity
                     }
-
                 }
 
                 override fun onCancelled(error: DatabaseError) {
