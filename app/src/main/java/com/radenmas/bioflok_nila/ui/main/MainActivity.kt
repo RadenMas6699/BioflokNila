@@ -21,6 +21,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.radenmas.bioflok_nila.R
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         b = ActivityMainBinding.inflate(layoutInflater)
         val v = b.root
         setContentView(v)
+
+        Firebase.messaging.subscribeToTopic("user")
 
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         val packageName = packageManager.getPackageInfo(packageName, 0).packageName
