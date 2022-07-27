@@ -6,20 +6,27 @@
 package com.radenmas.bioflok_nila.ui.main
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.radenmas.bioflok_nila.R
 import com.radenmas.bioflok_nila.databinding.FragmentChartBinding
-import com.radenmas.bioflok_nila.ui.utils.LineChart
+import java.util.*
 
 /**
  * Created by RadenMas on 22/04/2022.
@@ -71,7 +78,7 @@ class ChartFragment : Fragment() {
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataTemp.add(Entry(time, temp))
                     }
-                    LineChart().chart(b.lineChart, dataTemp, 0, 50)
+                    chart(b.lineChart, dataTemp, 0, 50)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -90,7 +97,7 @@ class ChartFragment : Fragment() {
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataPh.add(Entry(time, ph))
                     }
-                    LineChart().chart(b.lineChart, dataPh, 1, 11)
+                    chart(b.lineChart, dataPh, 1, 11)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -109,7 +116,7 @@ class ChartFragment : Fragment() {
                         val time = snapshot.child("time").value.toString().toFloat()
                         dataTurbidity.add(Entry(time, turbidity))
                     }
-                    LineChart().chart(b.lineChart, dataTurbidity, 0, 1000)
+                    chart(b.lineChart, dataTurbidity, 0, 1000)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -132,5 +139,55 @@ class ChartFragment : Fragment() {
     private fun initView() {
         clicked(b.tvTemp, b.tvPh, b.tvTurbidity)
         getDataTemp()
+    }
+
+    fun chart(
+        lineChart: com.github.mikephil.charting.charts.LineChart,
+        values: ArrayList<Entry>,
+        min: Int,
+        max: Int
+    ) {
+        val lineDataSet = LineDataSet(null, null)
+        lineDataSet.values = values
+        lineDataSet.setDrawValues(false)
+        lineDataSet.setDrawCircles(false)
+        lineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+        lineDataSet.setDrawFilled(true)
+        lineDataSet.color = ResourcesCompat.getColor(resources, R.color.primary_light, null)
+        lineDataSet.lineWidth = 2f
+        val iLineDataSets = ArrayList<ILineDataSet>()
+        iLineDataSets.add(lineDataSet)
+        val lineData = LineData(iLineDataSets)
+
+        val xAxis = lineChart.xAxis
+        xAxis.setDrawGridLines(false)
+        xAxis.setDrawAxisLine(true);
+        xAxis.setCenterAxisLabels(true);
+        xAxis.textSize = 10f;
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.setDrawLabels(true)
+        xAxis.labelRotationAngle = 0f //45
+        xAxis.setLabelCount(7, true)
+        xAxis.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                val longtime = value.toLong()
+                val cal =
+                    Calendar.getInstance(Locale.getDefault())
+                cal.timeInMillis = longtime * 1000
+                return DateFormat.format("HH:mm", cal).toString()
+            }
+        }
+
+        val yAxisL = lineChart.getAxis(YAxis.AxisDependency.LEFT)
+        yAxisL.setDrawGridLines(false)
+        yAxisL.setDrawLabels(true)
+        yAxisL.axisMinimum = min.toFloat()
+        yAxisL.axisMaximum = max.toFloat()
+
+        lineChart.data = lineData
+        lineChart.axisRight.isEnabled = false
+        lineChart.legend.isEnabled = false
+        lineChart.description.isEnabled = false
+        lineChart.moveViewTo(lineData.entryCount.toFloat(), 50f, YAxis.AxisDependency.LEFT)
     }
 }

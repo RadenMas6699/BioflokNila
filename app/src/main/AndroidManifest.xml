@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".ui.utils.MyFirebaseMessagingService"
+            android:name=".ui.service.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
