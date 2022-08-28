@@ -85,40 +85,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardHome"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/tvTitleTurbidity"
-                        style="@style/titleItemHome"
-                        android:text="@string/turbidity" />
-
-                    <ImageView
-                        android:id="@+id/imgTurbidity"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:paddingHorizontal="3dp"
-                        android:src="@drawable/ic_water_color" />
-
-                    <TextView
-                        android:id="@+id/tvValueTurbidity"
-                        style="@style/valueItemHome"
-                        android:layout_toEndOf="@id/imgTurbidity" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 style="@style/CardHome"
@@ -147,6 +116,38 @@
                         android:id="@+id/tvValueFeed"
                         style="@style/valueItemHome"
                         android:layout_toEndOf="@id/imgFeed" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardHome"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvTitleTurbidity"
+                        style="@style/titleItemHome"
+                        android:text="@string/turbidity" />
+
+                    <ImageView
+                        android:id="@+id/imgTurbidity"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:paddingHorizontal="3dp"
+                        android:src="@drawable/ic_water_color" />
+
+                    <TextView
+                        android:id="@+id/tvValueTurbidity"
+                        style="@style/valueItemHome"
+                        android:layout_toEndOf="@id/imgTurbidity" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
